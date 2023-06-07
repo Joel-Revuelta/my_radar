@@ -8,6 +8,11 @@
 #include "my.h"
 #include "my_printf.h"
 
+void puc(char c)
+{
+    write(1, &c, 1);
+}
+
 int	my_long_len(long long nb)
 {
     long int	div = 1;
