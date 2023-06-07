@@ -12,7 +12,6 @@ char *open_file(char *path)
     struct stat st;
     int fd = open(path, O_RDONLY);
     char *buff = NULL;
-    int rd = 0;
 
     if (fd == -1 || stat(path, &st) == -1) {
         close(fd);

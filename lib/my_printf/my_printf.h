@@ -51,5 +51,6 @@
     int fl_n(va_list list, flags_t flags, int *len);
     int fl_p(va_list list, flags_t flags, int *len);
     int fl_ff(va_list list, flags_t flags, int *len);
+    int g_fl(char const *format, int i, flags_t *flags);
 
 #endif /* !MY_PRINTF_H_ */
