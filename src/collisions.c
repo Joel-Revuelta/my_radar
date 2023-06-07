@@ -32,12 +32,10 @@ sfVector2f pos1)
     return sfTrue;
 }
 
-void check_crash(plane_t **pl, plane_t *prev, plane_t **planes, radar_t *radar)
+void check_crash(plane_t **pl, plane_t **planes)
 {
-    plane_t *prev2 = NULL;
-
-    for (plane_t *tmp = *planes; *pl && tmp; prev2 = tmp, tmp = tmp->next) {
-        if ((tmp->delay && !end_delay(tmp, tmp->clock) || tmp->delay ||
+    for (plane_t *tmp = *planes; *pl && tmp; tmp = tmp->next) {
+        if (((tmp->delay && !end_delay(tmp, tmp->clock)) || tmp->delay ||
         *pl == tmp) || !tmp || !*pl)
             continue;
         float rot1 = sfRectangleShape_getRotation((*pl)->rect) * M_PI / 180.0f;
@@ -49,7 +47,6 @@ void check_crash(plane_t **pl, plane_t *prev, plane_t **planes, radar_t *radar)
         if (check_coll((*pl)->rect, tmp->rect, axis, pos1)) {
             tmp->del = sfTrue;
             (*pl)->del = sfTrue;
-            my_printf("Collision between plane %d and %d at %s\n", tmp->id, (*pl)->id, sfText_getString(radar->t_txt));
             break;
         }
     }
