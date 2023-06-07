@@ -58,7 +58,8 @@
         sfBool s_option;
     } radar_t;
 
-    sfRenderWindow *create_window(char *name, int x, int y, int fr);
+    void my_radar(char *str);
+    sfRenderWindow *create_window(char *name, int fr);
     sfSprite *create_sprite(char *filepath, int x, int y);
     sfSound *create_sound(char *filepath);
     sfCircleShape *create_circle(sfVector2f pos, float radius);
@@ -70,11 +71,13 @@
     sfBool is_in_tower(plane_t *plane, radar_t *radar);
     sfFloatRect get_hitbox(plane_t *plane);
     plane_t *free_plane(plane_t **planes, plane_t *prev, plane_t *curr);
-    void check_crash(plane_t **pl, plane_t *, plane_t **planes, radar_t *radar);
+    void check_crash(plane_t **pl, plane_t **planes);
     sfFloatRect get_hitbox(plane_t *plane);
     sfVector2f *get_r_corners(sfFloatRect hitbox, float angle);
     sfVector2f rotate_point(sfVector2f point, sfVector2f center, float angle);
     sfVector2f get_step(sfVector2f a, sfVector2f b, int speed);
     float get_angle(sfVector2f a, sfVector2f b);
+    void move_planes(plane_t **planes, radar_t *radar);
+    sfBool end_delay(plane_t *planes, sfClock *clock);
 
 #endif /* !RADAR_H_ */

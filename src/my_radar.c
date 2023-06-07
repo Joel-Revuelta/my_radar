@@ -64,7 +64,7 @@ void destroyer(radar_t *radar)
     free(radar);
 }
 
-int my_radar(char *str)
+void my_radar(char *str)
 {
     radar_t *radar = init_radar(my_str_to_array(str, '\n'));
 

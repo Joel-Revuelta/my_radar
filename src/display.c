@@ -18,6 +18,6 @@ void display(radar_t *radar)
         sfRenderWindow_drawRectangleShape(radar->wd, tmp->rect, NULL);
         sfRenderWindow_drawCircleShape(radar->wd, tmp->circle, NULL);
     }
-    sfRenderWindow_drawRectangleShape(radar->wd, radar->t_txt, NULL);
+    sfRenderWindow_drawText(radar->wd, radar->t_txt, NULL);
     sfRenderWindow_display(radar->wd);
 }

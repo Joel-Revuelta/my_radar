@@ -72,7 +72,7 @@ radar_t *init_radar(char **info)
     radar_t *radar = malloc(sizeof(radar_t));
     radar->planes = NULL;
     radar->towers = NULL;
-    radar->wd = create_window("Radar", 1920, 1080, 30);
+    radar->wd = create_window("Radar", 30);
     radar->bg = create_sprite("assets/background.png", 0, 0);
     radar->timer = sfClock_create();
     radar->t_txt = create_text(FONT, "00:00", (sfVector2f){1775, -10}, 100);

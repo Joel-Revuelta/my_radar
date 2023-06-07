@@ -25,7 +25,7 @@ NAME = my_radar
 
 CC = gcc
 
-CFLAGS = -g3 -w -Wall -Wextra -Werror -I include/ -L lib/ -lmy
+CFLAGS = -g3 -W -Wall -Wextra -Werror -I include/ -L lib/ -lmy
 CSFML =  -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window -lm
 
 OBJ	=	$(SRC:.c=.o)

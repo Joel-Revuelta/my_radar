@@ -41,13 +41,13 @@ sfBool end_delay(plane_t *planes, sfClock *clock)
     return (sfFalse);
 }
 
-void do_collisions(plane_t **planes, radar_t *radar, plane_t *tmp, plane_t *pre)
+void do_collisions(plane_t **planes, radar_t *radar, plane_t *tmp)
 {
     if (is_in_tower(tmp, radar))
         sfRectangleShape_setOutlineColor(tmp->rect, sfGreen);
     else {
         sfRectangleShape_setOutlineColor(tmp->rect, sfYellow);
-        check_crash(&tmp, pre, planes, radar);
+        check_crash(&tmp, planes);
     }
     if (radar->l_option)
         sfRectangleShape_setOutlineColor(tmp->rect, sfTransparent);
@@ -62,7 +62,7 @@ void move_planes(plane_t **planes, radar_t *radar)
     plane_t *prev = NULL;
 
     for (plane_t *tmp = *planes; tmp; prev = tmp, tmp = tmp->next) {
-        if (tmp->delay && !end_delay(tmp, tmp->clock) || tmp->delay)
+        if ((tmp->delay && !end_delay(tmp, tmp->clock)) || tmp->delay)
             continue;
         if (sfTime_asMilliseconds(sfClock_getElapsedTime(tmp->clock)) > 25) {
             sfRectangleShape_move(tmp->rect, tmp->step);
@@ -74,7 +74,7 @@ void move_planes(plane_t **planes, radar_t *radar)
             break;
         if (is_landing(tmp))
             continue;
-        do_collisions(planes, radar, tmp, prev);
+        do_collisions(planes, radar, tmp);
         if (!tmp)
             return;
     }

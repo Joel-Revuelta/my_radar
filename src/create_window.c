@@ -7,7 +7,7 @@
 
 #include "radar.h"
 
-sfRenderWindow *create_window(char *name, int x, int y, int fr)
+sfRenderWindow *create_window(char *name, int fr)
 {
     sfRenderWindow *wd;
     sfVideoMode mode = {WIDTH, HEIGHT, BPP};
